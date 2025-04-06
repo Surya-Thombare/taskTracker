@@ -11,6 +11,8 @@
     "build": "babel src -d dist"
   },
   "dependencies": {
+    "@babel/cli": "^7.27.0",
+    "@babel/node": "^7.26.0",
     "bcryptjs": "^3.0.2",
     "compression": "^1.8.0",
     "cors": "^2.8.5",
