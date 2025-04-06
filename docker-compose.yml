@@ -1,0 +1,56 @@
+version: "3.8"
+
+services:
+  api:
+    build: .
+    container_name: tasktrack-api
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongodb
+      - redis
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - MONGODB_URI=mongodb://mongodb:27017/tasktrack
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - JWT_SECRET=your_jwt_secret_should_be_in_env_file
+      - JWT_EXPIRES_IN=7d
+      - JWT_REFRESH_EXPIRES_IN=30d
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    networks:
+      - tasktrack-network
+
+  mongodb:
+    image: mongo:latest
+    container_name: tasktrack-mongodb
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb-data:/data/db
+    networks:
+      - tasktrack-network
+
+  redis:
+    image: redis:alpine
+    container_name: tasktrack-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - tasktrack-network
+
+networks:
+  tasktrack-network:
+    driver: bridge
+
+volumes:
+  mongodb-data:
+  redis-data:
