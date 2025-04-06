@@ -5,6 +5,5 @@
       "source": "/(.*)",
       "destination": "/src"
     }
-  ],
-  "buildCommand": "next build"
+  ]
 }
