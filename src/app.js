@@ -13,11 +13,6 @@ const groupRoutes = require('./routes/group.routes');
 const taskRoutes = require('./routes/task.routes');
 const timerRoutes = require('./routes/timer.routes');
 
-const allowedOrigins = [
-  'http://localhost:3000',
-  'https://task-tracker-frontend-ruby.vercel.app'
-];
-
 // Import middleware
 const { errorHandler, errorConverter } = require('./middleware/error.middleware');
 const { xssSanitizer } = require('./middleware/validation.middleware');
@@ -38,9 +33,7 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use(xssSanitizer);
 
 // Enable CORS
-app.use(cors({
-  origin: allowedOrigins,
-}));
+app.use(cors());
 
 
 // Compress responses
