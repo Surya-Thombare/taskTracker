@@ -34,12 +34,8 @@ app.use(xssSanitizer);
 
 // Enable CORS
 app.use(cors({
-  origin: {
-    'http://localhost:3000': true,
-    'https://task-tracker-frontend-ruby.vercel.app': true,
-  },
+  origin: 'https://task-tracker-frontend-ruby.vercel.app',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
-  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 // Compress responses
