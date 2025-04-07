@@ -33,7 +33,9 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use(xssSanitizer);
 
 // Enable CORS
-app.use(cors());
+app.use(cors({
+  origin: '*',
+}));
 
 
 // Compress responses
