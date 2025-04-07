@@ -165,9 +165,6 @@ const logout = async (req, res) => {
 const getProfile = async (req, res) => {
   try {
     const user = req.user;
-
-    console.log('retrieving user profile:', user._id);
-
     // Send response
     return successResponse(
       res,

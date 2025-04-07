@@ -11,8 +11,6 @@ const { status: httpStatus } = require('http-status');
  * @returns {void}
  */
 const authenticate = async (req, res, next) => {
-  // console.log('retrieving user profile:', user._id);
-  console.log('retrieving user profile:', req);
   try {
     // Get the token from the Authorization header
     const authHeader = req.headers.authorization;
