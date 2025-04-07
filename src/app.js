@@ -32,12 +32,8 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 // XSS Sanitization middleware
 app.use(xssSanitizer);
 
-app.options('*', cors()); // Preflight response for all routes
-
 // Enable CORS
-app.use(cors({
-  origin: '*',
-}));
+app.use(cors());
 
 
 // Compress responses
