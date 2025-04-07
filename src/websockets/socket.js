@@ -17,9 +17,10 @@ const setupSocketIO = (server) => {
   // Initialize Socket.IO
   io = new Server(server, {
     cors: {
-      origin: process.env.CORS_ORIGIN || '*',
-      methods: ['GET', 'POST'],
-      credentials: true,
+      origin: {
+        'http://localhost:3000': true,
+        'https://task-tracker-frontend-ruby.vercel.app': true,
+      },
     },
   });
 

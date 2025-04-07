@@ -49,6 +49,7 @@ const register = async (req, res) => {
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
+    console.log('retrieving user profile:', email, password);
     const result = await authService.login(email, password);
 
     return successResponse(
@@ -165,6 +166,8 @@ const getProfile = async (req, res) => {
   try {
     const user = req.user;
 
+    console.log('retrieving user profile:', user._id);
+
     // Send response
     return successResponse(
       res,
@@ -186,7 +189,9 @@ const getProfile = async (req, res) => {
       }
     );
   } catch (error) {
+    console.log('Error retrieving user profile:', error);
     logger.error('Error retrieving user profile:', error);
+
     return errorResponse(
       res,
       httpStatus.INTERNAL_SERVER_ERROR,
