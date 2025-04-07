@@ -37,6 +37,10 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 // XSS Sanitization middleware
 app.use(xssSanitizer);
 
+// Enable CORS
+app.use(cors({
+  origin: allowedOrigins,
+}));
 
 app.use(cors({
   origin: function (origin, callback) {
